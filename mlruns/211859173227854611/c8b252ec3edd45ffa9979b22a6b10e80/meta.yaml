@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/211859173227854611/c8b252ec3edd45ffa9979b22a6b10e80/artifacts
+end_time: 1736956671876
+entry_point_name: ''
+experiment_id: '211859173227854611'
+lifecycle_stage: active
+run_id: c8b252ec3edd45ffa9979b22a6b10e80
+run_name: useful-fly-739
+run_uuid: c8b252ec3edd45ffa9979b22a6b10e80
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736956660209
+status: 3
+tags: []
+user_id: r3z8

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/773321196011060045/59841d1fdc834e73ad73e375fea4a086/artifacts
+end_time: 1736695302600
+entry_point_name: ''
+experiment_id: '773321196011060045'
+lifecycle_stage: active
+run_id: 59841d1fdc834e73ad73e375fea4a086
+run_name: bold-midge-553
+run_uuid: 59841d1fdc834e73ad73e375fea4a086
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736695278618
+status: 3
+tags: []
+user_id: r3z8

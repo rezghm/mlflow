@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/773321196011060045/4c26c83188f34f5796f3c2dd91c4c8a9/artifacts
+end_time: 1736352346529
+entry_point_name: ''
+experiment_id: '773321196011060045'
+lifecycle_stage: active
+run_id: 4c26c83188f34f5796f3c2dd91c4c8a9
+run_name: able-fox-344
+run_uuid: 4c26c83188f34f5796f3c2dd91c4c8a9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736352332411
+status: 3
+tags: []
+user_id: r3z8

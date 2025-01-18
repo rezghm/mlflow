@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/773321196011060045/607150c6c4dc4d92b5304949deae4566/artifacts
+end_time: 1736352206796
+entry_point_name: ''
+experiment_id: '773321196011060045'
+lifecycle_stage: active
+run_id: 607150c6c4dc4d92b5304949deae4566
+run_name: flawless-newt-101
+run_uuid: 607150c6c4dc4d92b5304949deae4566
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736352189559
+status: 3
+tags: []
+user_id: r3z8

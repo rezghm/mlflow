@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/163290849071089941/931cdedd310c4706abd6dcec765bc210/artifacts
+end_time: 1736949920720
+entry_point_name: ''
+experiment_id: '163290849071089941'
+lifecycle_stage: active
+run_id: 931cdedd310c4706abd6dcec765bc210
+run_name: gaudy-stoat-603
+run_uuid: 931cdedd310c4706abd6dcec765bc210
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736949898730
+status: 3
+tags: []
+user_id: r3z8
