@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/336349689905412359/b1fe58a221544f68974cbf2708addc06/artifacts
+end_time: 1737215743450
+entry_point_name: ''
+experiment_id: '336349689905412359'
+lifecycle_stage: active
+run_id: b1fe58a221544f68974cbf2708addc06
+run_name: bemused-loon-960
+run_uuid: b1fe58a221544f68974cbf2708addc06
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737215729515
+status: 3
+tags: []
+user_id: r3z8
