@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/211859173227854611/17438bda713247c6950460d4b814a577/artifacts
+end_time: 1736956570529
+entry_point_name: ''
+experiment_id: '211859173227854611'
+lifecycle_stage: active
+run_id: 17438bda713247c6950460d4b814a577
+run_name: thundering-fawn-187
+run_uuid: 17438bda713247c6950460d4b814a577
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736956557029
+status: 3
+tags: []
+user_id: r3z8

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/773321196011060045/c4838f0d8a5f41d9bb9d33f7f3c464ce/artifacts
+end_time: 1736503835949
+entry_point_name: ''
+experiment_id: '773321196011060045'
+lifecycle_stage: active
+run_id: c4838f0d8a5f41d9bb9d33f7f3c464ce
+run_name: worried-flea-912
+run_uuid: c4838f0d8a5f41d9bb9d33f7f3c464ce
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736503818067
+status: 3
+tags: []
+user_id: r3z8

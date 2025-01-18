@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/773321196011060045/9fd57b02783c467da8e7516b41cb0125/artifacts
+end_time: 1736351437240
+entry_point_name: ''
+experiment_id: '773321196011060045'
+lifecycle_stage: active
+run_id: 9fd57b02783c467da8e7516b41cb0125
+run_name: clean-doe-728
+run_uuid: 9fd57b02783c467da8e7516b41cb0125
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736351420308
+status: 3
+tags: []
+user_id: r3z8

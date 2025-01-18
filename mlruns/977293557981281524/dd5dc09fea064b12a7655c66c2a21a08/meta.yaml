@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/977293557981281524/dd5dc09fea064b12a7655c66c2a21a08/artifacts
+end_time: 1737211310709
+entry_point_name: ''
+experiment_id: '977293557981281524'
+lifecycle_stage: active
+run_id: dd5dc09fea064b12a7655c66c2a21a08
+run_name: stately-rook-269
+run_uuid: dd5dc09fea064b12a7655c66c2a21a08
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737211292318
+status: 3
+tags: []
+user_id: r3z8

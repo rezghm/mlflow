@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/211859173227854611/15eaa380e36646afa24571a5c911c55a/artifacts
+end_time: 1736956366105
+entry_point_name: ''
+experiment_id: '211859173227854611'
+lifecycle_stage: active
+run_id: 15eaa380e36646afa24571a5c911c55a
+run_name: salty-hen-199
+run_uuid: 15eaa380e36646afa24571a5c911c55a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736956348022
+status: 3
+tags: []
+user_id: r3z8
