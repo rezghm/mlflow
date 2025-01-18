@@ -78,9 +78,9 @@ if __name__ == "__main__":
     mlflow.start_run()
 
     mlflow.set_tag("release.version", "0.1")
-    mlflow.autolog(
-        log_input_examples=True
-
+    mlflow.sklearn.autolog(
+        log_input_examples=True,
+        log_post_training_metrics=True # was already set to True by default
     )
     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
     lr.fit(train_x, train_y)

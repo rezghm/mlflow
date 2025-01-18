@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/206975002297501741/c5bbfbfe53464e41acd10b590c221856/artifacts
+end_time: 1737223021901
+entry_point_name: ''
+experiment_id: '206975002297501741'
+lifecycle_stage: active
+run_id: c5bbfbfe53464e41acd10b590c221856
+run_name: skittish-crow-914
+run_uuid: c5bbfbfe53464e41acd10b590c221856
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737223008082
+status: 3
+tags: []
+user_id: r3z8

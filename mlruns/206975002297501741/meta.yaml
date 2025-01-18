@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/206975002297501741
+creation_time: 1737222936957
+experiment_id: '206975002297501741'
+last_update_time: 1737222936957
+lifecycle_stage: active
+name: experiment_autolog
