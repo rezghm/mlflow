@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import ElasticNet
+from sklearn.linear_model import ElasticNet, Lasso, Ridge
 import mlflow
 import mlflow.sklearn
 from pathlib import Path
@@ -65,7 +65,11 @@ if __name__ == "__main__":
 #         artifact_location=Path.cwd().joinpath('myartifacts').as_uri()
 # )
 #     exp = mlflow.set_experiment(experiment_name="experiment_1")
-    exp = mlflow.set_experiment(experiment_name="experiment_5")
+
+# --------------------------First Experiment Elastic Net------------------------
+    print('First Experiment Elastic Net')
+    exp = mlflow.set_experiment(experiment_name="exp_multi_EL")
+    # exp = mlflow.set_experiment(experiment_name="experiment_6")
     # get_exp = mlflow.get_experiment(exp_id)
 
     # print(f"Name: {get_exp.name}")
@@ -76,9 +80,9 @@ if __name__ == "__main__":
 
     print(f"Name: {exp.name}")
     print(f"Experiment_id: {exp.experiment_id}")
-    print(f"Tags: {exp.tags}")
-    print(f"Lifecycle_stage: {exp.lifecycle_stage}")
-    print(f"Creation timestamp: {exp.creation_time}")
+    # print(f"Tags: {exp.tags}")
+    # print(f"Lifecycle_stage: {exp.lifecycle_stage}")
+    # print(f"Creation timestamp: {exp.creation_time}")
 
 
     # with mlflow.start_run(experiment_id=exp.experiment_id):
@@ -104,10 +108,15 @@ if __name__ == "__main__":
     #     mlflow.log_metric("r2", r2)
     #     mlflow.log_metric("mae", mae)
     #     mlflow.sklearn.log_model(lr, "my_new_model")
-    mlflow.start_run()
+    mlflow.start_run(run_name='run1')
 
-    mlflow.set_tag("release.version", "0.1")
-
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
     lr.fit(train_x, train_y)
 
@@ -144,16 +153,516 @@ if __name__ == "__main__":
     artifact_uri = mlflow.get_artifact_uri()
     print('The artifact path is:', artifact_uri)
 
-    # run = mlflow.active_run()
+    run = mlflow.active_run()
     # run = mlflow.last_active_run()
-    # print(f"Active run id is: {run.info.run_id}")
-    # print(f"Active run name is: {run.info.run_name}")
-
-    mlflow.end_run('FINISHED')
-    # can only use last_active_run here
-    run = mlflow.last_active_run()
     print(f"Active run id is: {run.info.run_id}")
     print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+    # -------------------------------- SECOND RUN --------------------------------
+    mlflow.start_run(run_name='run2.1')
+
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
+    # lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    lr = ElasticNet(alpha=0.9, l1_ratio=0.9, random_state=42)
+    lr.fit(train_x, train_y)
+
+    predicted_qualities = lr.predict(test_x)
+
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+
+    print("Elasticnet model (alpha={:f}, l1_ratio={:f}):".format(alpha, l1_ratio))
+    print("  RMSE: %s" % rmse)
+    print("  MAE: %s" % mae)
+    print("  R2: %s" % r2)
+
+    # mlflow.log_param("alpha", alpha)
+    # mlflow.log_param("l1_ratio", l1_ratio)
+    params = {
+        'alpha': 0.9,
+        'l1_ratio': 0.9
+    }
+    mlflow.log_params(params)
+    # mlflow.log_metric("rmse", rmse)
+    # mlflow.log_metric("r2", r2)
+    # mlflow.log_metric("mae", mae)
+    metrics = {
+        'rmse': rmse,
+        'r2': r2,
+        'mae': mae
+    }
+    mlflow.log_metrics(metrics)
+
+    mlflow.sklearn.log_model(lr, "my_new_model_1")
+    # mlflow.log_artifact('red-wine-quality.csv')
+    mlflow.log_artifacts('data/')
+
+    artifact_uri = mlflow.get_artifact_uri()
+    print('The artifact path is:', artifact_uri)
+
+    run = mlflow.active_run()
+    # run = mlflow.last_active_run()
+    print(f"Active run id is: {run.info.run_id}")
+    print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+    # ----------------------------- THIRD RUN ---------------------
+    mlflow.start_run(run_name='run3.1')
+
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
+    # lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    lr = ElasticNet(alpha=0.4, l1_ratio=0.4, random_state=42)
+    lr.fit(train_x, train_y)
+
+    predicted_qualities = lr.predict(test_x)
+
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+
+    print("Elasticnet model (alpha={:f}, l1_ratio={:f}):".format(alpha, l1_ratio))
+    print("  RMSE: %s" % rmse)
+    print("  MAE: %s" % mae)
+    print("  R2: %s" % r2)
+
+    # mlflow.log_param("alpha", alpha)
+    # mlflow.log_param("l1_ratio", l1_ratio)
+    params = {
+        'alpha': 0.4,
+        'l1_ratio': 0.4
+    }
+    mlflow.log_params(params)
+    # mlflow.log_metric("rmse", rmse)
+    # mlflow.log_metric("r2", r2)
+    # mlflow.log_metric("mae", mae)
+    metrics = {
+        'rmse': rmse,
+        'r2': r2,
+        'mae': mae
+    }
+    mlflow.log_metrics(metrics)
+
+    mlflow.sklearn.log_model(lr, "my_new_model_1")
+    # mlflow.log_artifact('red-wine-quality.csv')
+    mlflow.log_artifacts('data/')
+
+    artifact_uri = mlflow.get_artifact_uri()
+    print('The artifact path is:', artifact_uri)
+
+    run = mlflow.active_run()
+    # run = mlflow.last_active_run()
+    print(f"Active run id is: {run.info.run_id}")
+    print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+
+    # --------------------------Second Experiment Ridge------------------------
+    print('Second Experiment Ridge')
+    exp = mlflow.set_experiment(experiment_name="exp_multi_Ridge")
+    # exp = mlflow.set_experiment(experiment_name="experiment_6")
+    # get_exp = mlflow.get_experiment(exp_id)
+
+    # print(f"Name: {get_exp.name}")
+    # print(f"Experiment_id: {get_exp.experiment_id}")
+    # print(f"Tags: {get_exp.tags}")
+    # print(f"Lifecycle_stage: {get_exp.lifecycle_stage}")
+    # print(f"Creation timestamp: {get_exp.creation_time}")
+
+    print(f"Name: {exp.name}")
+    print(f"Experiment_id: {exp.experiment_id}")
+    # print(f"Tags: {exp.tags}")
+    # print(f"Lifecycle_stage: {exp.lifecycle_stage}")
+    # print(f"Creation timestamp: {exp.creation_time}")
+
+    # with mlflow.start_run(experiment_id=exp.experiment_id):
+    # with mlflow.start_run(experiment_id=exp_id):
+    # with mlflow.start_run(experiment_id=exp.experiment_id):
+    # with mlflow.start_run(experiment_id=exp.experiment_id, run_name='run_1'):
+    # with mlflow.start_run(run_id='5b18884725bc479c94fdc5c6d74b0a53'):
+    #     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    #     lr.fit(train_x, train_y)
+    #
+    #     predicted_qualities = lr.predict(test_x)
+    #
+    #     (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+    #
+    #     print("Elasticnet model (alpha={:f}, l1_ratio={:f}):".format(alpha, l1_ratio))
+    #     print("  RMSE: %s" % rmse)
+    #     print("  MAE: %s" % mae)
+    #     print("  R2: %s" % r2)
+    #
+    #     mlflow.log_param("alpha", alpha)
+    #     mlflow.log_param("l1_ratio", l1_ratio)
+    #     mlflow.log_metric("rmse", rmse)
+    #     mlflow.log_metric("r2", r2)
+    #     mlflow.log_metric("mae", mae)
+    #     mlflow.sklearn.log_model(lr, "my_new_model")
+    mlflow.start_run(run_name='run1')
+
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
+    lr = Ridge(alpha=alpha, random_state=42)
+    lr.fit(train_x, train_y)
+
+    predicted_qualities = lr.predict(test_x)
+
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+
+    print("Ridge model (alpha={:f}".format(alpha))
+    print("  RMSE: %s" % rmse)
+    print("  MAE: %s" % mae)
+    print("  R2: %s" % r2)
+
+    # mlflow.log_param("alpha", alpha)
+    # mlflow.log_param("l1_ratio", l1_ratio)
+    params = {
+        'alpha': alpha
+    }
+    mlflow.log_params(params)
+    # mlflow.log_metric("rmse", rmse)
+    # mlflow.log_metric("r2", r2)
+    # mlflow.log_metric("mae", mae)
+    metrics = {
+        'rmse': rmse,
+        'r2': r2,
+        'mae': mae
+    }
+    mlflow.log_metrics(metrics)
+
+    mlflow.sklearn.log_model(lr, "my_new_model_1")
+    # mlflow.log_artifact('red-wine-quality.csv')
+    mlflow.log_artifacts('data/')
+
+    artifact_uri = mlflow.get_artifact_uri()
+    print('The artifact path is:', artifact_uri)
+
+    run = mlflow.active_run()
+    # run = mlflow.last_active_run()
+    print(f"Active run id is: {run.info.run_id}")
+    print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+    # -------------------------------- SECOND RUN --------------------------------
+    mlflow.start_run(run_name='run2.1')
+
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
+    # lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    lr = Ridge(alpha=0.9, random_state=42)
+    lr.fit(train_x, train_y)
+
+    predicted_qualities = lr.predict(test_x)
+
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+
+    print("Ridge model (alpha={:f}".format(alpha))
+    print("  RMSE: %s" % rmse)
+    print("  MAE: %s" % mae)
+    print("  R2: %s" % r2)
+
+    # mlflow.log_param("alpha", alpha)
+    # mlflow.log_param("l1_ratio", l1_ratio)
+    params = {
+        'alpha': 0.9
+    }
+    mlflow.log_params(params)
+    # mlflow.log_metric("rmse", rmse)
+    # mlflow.log_metric("r2", r2)
+    # mlflow.log_metric("mae", mae)
+    metrics = {
+        'rmse': rmse,
+        'r2': r2,
+        'mae': mae
+    }
+    mlflow.log_metrics(metrics)
+
+    mlflow.sklearn.log_model(lr, "my_new_model_1")
+    # mlflow.log_artifact('red-wine-quality.csv')
+    mlflow.log_artifacts('data/')
+
+    artifact_uri = mlflow.get_artifact_uri()
+    print('The artifact path is:', artifact_uri)
+
+    run = mlflow.active_run()
+    # run = mlflow.last_active_run()
+    print(f"Active run id is: {run.info.run_id}")
+    print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+    # ----------------------------- THIRD RUN ---------------------
+    mlflow.start_run(run_name='run3.1')
+
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
+    # lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    lr = Ridge(alpha=0.4, random_state=42)
+    lr.fit(train_x, train_y)
+
+    predicted_qualities = lr.predict(test_x)
+
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+
+    print("Ridge model (alpha={:f}".format(alpha))
+    print("  RMSE: %s" % rmse)
+    print("  MAE: %s" % mae)
+    print("  R2: %s" % r2)
+
+    # mlflow.log_param("alpha", alpha)
+    # mlflow.log_param("l1_ratio", l1_ratio)
+    params = {
+        'alpha': 0.4
+    }
+    mlflow.log_params(params)
+    # mlflow.log_metric("rmse", rmse)
+    # mlflow.log_metric("r2", r2)
+    # mlflow.log_metric("mae", mae)
+    metrics = {
+        'rmse': rmse,
+        'r2': r2,
+        'mae': mae
+    }
+    mlflow.log_metrics(metrics)
+
+    mlflow.sklearn.log_model(lr, "my_new_model_1")
+    # mlflow.log_artifact('red-wine-quality.csv')
+    mlflow.log_artifacts('data/')
+
+    artifact_uri = mlflow.get_artifact_uri()
+    print('The artifact path is:', artifact_uri)
+
+    run = mlflow.active_run()
+    # run = mlflow.last_active_run()
+    print(f"Active run id is: {run.info.run_id}")
+    print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+
+
+    # --------------------------Third Experiment Lasso------------------------
+    print('Second Experiment Lasso')
+    exp = mlflow.set_experiment(experiment_name="exp_multi_Lasso")
+    # exp = mlflow.set_experiment(experiment_name="experiment_6")
+    # get_exp = mlflow.get_experiment(exp_id)
+
+    # print(f"Name: {get_exp.name}")
+    # print(f"Experiment_id: {get_exp.experiment_id}")
+    # print(f"Tags: {get_exp.tags}")
+    # print(f"Lifecycle_stage: {get_exp.lifecycle_stage}")
+    # print(f"Creation timestamp: {get_exp.creation_time}")
+
+    print(f"Name: {exp.name}")
+    print(f"Experiment_id: {exp.experiment_id}")
+    # print(f"Tags: {exp.tags}")
+    # print(f"Lifecycle_stage: {exp.lifecycle_stage}")
+    # print(f"Creation timestamp: {exp.creation_time}")
+
+    # with mlflow.start_run(experiment_id=exp.experiment_id):
+    # with mlflow.start_run(experiment_id=exp_id):
+    # with mlflow.start_run(experiment_id=exp.experiment_id):
+    # with mlflow.start_run(experiment_id=exp.experiment_id, run_name='run_1'):
+    # with mlflow.start_run(run_id='5b18884725bc479c94fdc5c6d74b0a53'):
+    #     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    #     lr.fit(train_x, train_y)
+    #
+    #     predicted_qualities = lr.predict(test_x)
+    #
+    #     (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+    #
+    #     print("Elasticnet model (alpha={:f}, l1_ratio={:f}):".format(alpha, l1_ratio))
+    #     print("  RMSE: %s" % rmse)
+    #     print("  MAE: %s" % mae)
+    #     print("  R2: %s" % r2)
+    #
+    #     mlflow.log_param("alpha", alpha)
+    #     mlflow.log_param("l1_ratio", l1_ratio)
+    #     mlflow.log_metric("rmse", rmse)
+    #     mlflow.log_metric("r2", r2)
+    #     mlflow.log_metric("mae", mae)
+    #     mlflow.sklearn.log_model(lr, "my_new_model")
+    mlflow.start_run(run_name='run1')
+
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
+    lr = Lasso(alpha=alpha, random_state=42)
+    lr.fit(train_x, train_y)
+
+    predicted_qualities = lr.predict(test_x)
+
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+
+    print("Ridge model (alpha={:f}".format(alpha))
+    print("  RMSE: %s" % rmse)
+    print("  MAE: %s" % mae)
+    print("  R2: %s" % r2)
+
+    # mlflow.log_param("alpha", alpha)
+    # mlflow.log_param("l1_ratio", l1_ratio)
+    params = {
+        'alpha': alpha
+    }
+    mlflow.log_params(params)
+    # mlflow.log_metric("rmse", rmse)
+    # mlflow.log_metric("r2", r2)
+    # mlflow.log_metric("mae", mae)
+    metrics = {
+        'rmse': rmse,
+        'r2': r2,
+        'mae': mae
+    }
+    mlflow.log_metrics(metrics)
+
+    mlflow.sklearn.log_model(lr, "my_new_model_1")
+    # mlflow.log_artifact('red-wine-quality.csv')
+    mlflow.log_artifacts('data/')
+
+    artifact_uri = mlflow.get_artifact_uri()
+    print('The artifact path is:', artifact_uri)
+
+    run = mlflow.active_run()
+    # run = mlflow.last_active_run()
+    print(f"Active run id is: {run.info.run_id}")
+    print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+    # -------------------------------- SECOND RUN --------------------------------
+    mlflow.start_run(run_name='run2.1')
+
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
+    # lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    lr = Lasso(alpha=0.9, random_state=42)
+    lr.fit(train_x, train_y)
+
+    predicted_qualities = lr.predict(test_x)
+
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+
+    print("Lasso model (alpha={:f}".format(alpha))
+    print("  RMSE: %s" % rmse)
+    print("  MAE: %s" % mae)
+    print("  R2: %s" % r2)
+
+    # mlflow.log_param("alpha", alpha)
+    # mlflow.log_param("l1_ratio", l1_ratio)
+    params = {
+        'alpha': 0.9
+    }
+    mlflow.log_params(params)
+    # mlflow.log_metric("rmse", rmse)
+    # mlflow.log_metric("r2", r2)
+    # mlflow.log_metric("mae", mae)
+    metrics = {
+        'rmse': rmse,
+        'r2': r2,
+        'mae': mae
+    }
+    mlflow.log_metrics(metrics)
+
+    mlflow.sklearn.log_model(lr, "my_new_model_1")
+    # mlflow.log_artifact('red-wine-quality.csv')
+    mlflow.log_artifacts('data/')
+
+    artifact_uri = mlflow.get_artifact_uri()
+    print('The artifact path is:', artifact_uri)
+
+    run = mlflow.active_run()
+    # run = mlflow.last_active_run()
+    print(f"Active run id is: {run.info.run_id}")
+    print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+    # ----------------------------- THIRD RUN ---------------------
+    mlflow.start_run(run_name='run3.1')
+
+    # mlflow.set_tag("release.version", "0.1")
+    tags = {
+        "engineering": "ML platform",
+        "release.candidate": "RC1",
+        "release.version": "2.2"
+    }
+    mlflow.set_tags(tags)
+    # lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    lr = Lasso(alpha=0.4, random_state=42)
+    lr.fit(train_x, train_y)
+
+    predicted_qualities = lr.predict(test_x)
+
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+
+    print("Lasso model (alpha={:f}".format(alpha))
+    print("  RMSE: %s" % rmse)
+    print("  MAE: %s" % mae)
+    print("  R2: %s" % r2)
+
+    # mlflow.log_param("alpha", alpha)
+    # mlflow.log_param("l1_ratio", l1_ratio)
+    params = {
+        'alpha': 0.4
+    }
+    mlflow.log_params(params)
+    # mlflow.log_metric("rmse", rmse)
+    # mlflow.log_metric("r2", r2)
+    # mlflow.log_metric("mae", mae)
+    metrics = {
+        'rmse': rmse,
+        'r2': r2,
+        'mae': mae
+    }
+    mlflow.log_metrics(metrics)
+
+    mlflow.sklearn.log_model(lr, "my_new_model_1")
+    # mlflow.log_artifact('red-wine-quality.csv')
+    mlflow.log_artifacts('data/')
+
+    artifact_uri = mlflow.get_artifact_uri()
+    print('The artifact path is:', artifact_uri)
+
+    run = mlflow.active_run()
+    # run = mlflow.last_active_run()
+    print(f"Active run id is: {run.info.run_id}")
+    print(f"Active run name is: {run.info.run_name}")
+
+    mlflow.end_run('FINISHED')
+
+    # can only use last_active_run here
+    run = mlflow.last_active_run()
+    print(f"last Active run id is: {run.info.run_id}")
+    print(f"last Active run name is: {run.info.run_name}")
 
 
 

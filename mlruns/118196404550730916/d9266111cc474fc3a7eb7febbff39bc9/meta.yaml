@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/118196404550730916/d9266111cc474fc3a7eb7febbff39bc9/artifacts
+end_time: 1737219455335
+entry_point_name: ''
+experiment_id: '118196404550730916'
+lifecycle_stage: active
+run_id: d9266111cc474fc3a7eb7febbff39bc9
+run_name: run2
+run_uuid: d9266111cc474fc3a7eb7febbff39bc9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737219445831
+status: 3
+tags: []
+user_id: r3z8
