@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/534075552381650044/974e4505b6ad49dfa57d78c4bc907d22/artifacts
+end_time: 1737386408481
+entry_point_name: ''
+experiment_id: '534075552381650044'
+lifecycle_stage: active
+run_id: 974e4505b6ad49dfa57d78c4bc907d22
+run_name: overjoyed-shark-225
+run_uuid: 974e4505b6ad49dfa57d78c4bc907d22
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737386374645
+status: 3
+tags: []
+user_id: r3z8
