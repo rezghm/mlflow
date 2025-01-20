@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/534075552381650044/ab4cf487ec154f14af917bfc00ded09f/artifacts
+end_time: 1737386695282
+entry_point_name: ''
+experiment_id: '534075552381650044'
+lifecycle_stage: active
+run_id: ab4cf487ec154f14af917bfc00ded09f
+run_name: sneaky-gull-688
+run_uuid: ab4cf487ec154f14af917bfc00ded09f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737386678811
+status: 3
+tags: []
+user_id: r3z8
