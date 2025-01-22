@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/494670332379690459/4d99e1ceda9b4c54a975c76c309dcbdf/artifacts
+end_time: 1737561841127
+entry_point_name: ''
+experiment_id: '494670332379690459'
+lifecycle_stage: active
+run_id: 4d99e1ceda9b4c54a975c76c309dcbdf
+run_name: luminous-koi-921
+run_uuid: 4d99e1ceda9b4c54a975c76c309dcbdf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737561834634
+status: 3
+tags: []
+user_id: r3z8

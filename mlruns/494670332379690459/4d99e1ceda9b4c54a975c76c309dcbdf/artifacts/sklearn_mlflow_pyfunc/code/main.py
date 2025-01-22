@@ -21,8 +21,8 @@ logger = logging.getLogger(__name__)
 
 # get arguments from command
 parser = argparse.ArgumentParser()
-parser.add_argument("--alpha", type=float, required=False, default=0.7)
-parser.add_argument("--l1_ratio", type=float, required=False, default=0.7)
+parser.add_argument("--alpha", type=float, required=False, default=0.4)
+parser.add_argument("--l1_ratio", type=float, required=False, default=0.4)
 args = parser.parse_args()
 
 # evaluation function
@@ -101,8 +101,8 @@ if __name__ == "__main__":
     print("  R2: %s" % r2)
 
     mlflow.log_params({
-        "alpha": 0.7,
-        "l1_ratio": 0.7
+        "alpha": 0.4,
+        "l1_ratio": 0.4
     })
 
     mlflow.log_metrics({
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         code_path=["main.py"],
         conda_env=conda_env
    )
-    artifacts_uri = mlflow.get_artifact_uri("sklearn_mlflow_pyfunc")
+    artifacts_uri = mlflow.get_artifact_uri("sklear_mlflow_pyfunc")
     mlflow.evaluate(
         artifacts_uri,
         test,

@@ -21,8 +21,8 @@ logger = logging.getLogger(__name__)
 
 # get arguments from command
 parser = argparse.ArgumentParser()
-parser.add_argument("--alpha", type=float, required=False, default=0.7)
-parser.add_argument("--l1_ratio", type=float, required=False, default=0.7)
+parser.add_argument("--alpha", type=float, required=False, default=0.4)
+parser.add_argument("--l1_ratio", type=float, required=False, default=0.4)
 args = parser.parse_args()
 
 # evaluation function
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     mlflow.set_tracking_uri(uri="")
 
     print("The set tracking uri is ", mlflow.get_tracking_uri())
-    exp = mlflow.set_experiment(experiment_name="experiment_model_evaluation")
+    exp = mlflow.set_experiment(experiment_name="experiment_custom_sklearn")
     #get_exp = mlflow.get_experiment(exp_id)
 
     print("Name: {}".format(exp.name))
@@ -101,8 +101,8 @@ if __name__ == "__main__":
     print("  R2: %s" % r2)
 
     mlflow.log_params({
-        "alpha": 0.7,
-        "l1_ratio": 0.7
+        "alpha": 0.4,
+        "l1_ratio": 0.4
     })
 
     mlflow.log_metrics({
@@ -144,13 +144,13 @@ if __name__ == "__main__":
     }
 
     mlflow.pyfunc.log_model(
-        artifact_path="sklearn_mlflow_pyfunc",
+        artifact_path="sklear_mlflow_pyfunc",
         python_model=SklearnWrapper(),
         artifacts=artifacts,
         code_path=["main.py"],
         conda_env=conda_env
    )
-    artifacts_uri = mlflow.get_artifact_uri("sklearn_mlflow_pyfunc")
+    artifacts_uri = mlflow.get_artifact_uri("sklear_mlflow_pyfunc")
     mlflow.evaluate(
         artifacts_uri,
         test,

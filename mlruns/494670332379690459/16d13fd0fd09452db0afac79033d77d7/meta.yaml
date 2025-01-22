@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/494670332379690459/16d13fd0fd09452db0afac79033d77d7/artifacts
+end_time: 1737561990554
+entry_point_name: ''
+experiment_id: '494670332379690459'
+lifecycle_stage: active
+run_id: 16d13fd0fd09452db0afac79033d77d7
+run_name: righteous-swan-795
+run_uuid: 16d13fd0fd09452db0afac79033d77d7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737561946908
+status: 3
+tags: []
+user_id: r3z8
