@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1737710292420
+current_stage: None
+description: ''
+last_updated_timestamp: 1737710292420
+name: elastic-net-regression-outside-mlflow
+run_id: 385eced2448541118e8f745ca9927f27
+run_link: ''
+source: mlflow-artifacts:/783138146956411058/385eced2448541118e8f745ca9927f27/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/783138146956411058/385eced2448541118e8f745ca9927f27/artifacts/model
+user_id: null
+version: 1

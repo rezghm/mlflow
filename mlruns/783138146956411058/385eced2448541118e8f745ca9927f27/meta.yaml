@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/783138146956411058/385eced2448541118e8f745ca9927f27/artifacts
+end_time: 1737710292673
+entry_point_name: ''
+experiment_id: '783138146956411058'
+lifecycle_stage: active
+run_id: 385eced2448541118e8f745ca9927f27
+run_name: dapper-jay-24
+run_uuid: 385eced2448541118e8f745ca9927f27
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737710277565
+status: 3
+tags: []
+user_id: r3z8
