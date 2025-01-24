@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1737707910732
+current_stage: None
+description: ''
+last_updated_timestamp: 1737707910732
+name: ElasticNet
+run_id: 2fc9ce78d15f44d3a29496a513d79185
+run_link: ''
+source: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/238852361520993621/2fc9ce78d15f44d3a29496a513d79185/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/238852361520993621/2fc9ce78d15f44d3a29496a513d79185/artifacts/model
+user_id: null
+version: 1

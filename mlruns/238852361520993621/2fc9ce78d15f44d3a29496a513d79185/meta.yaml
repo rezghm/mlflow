@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/238852361520993621/2fc9ce78d15f44d3a29496a513d79185/artifacts
+end_time: 1737707846205
+entry_point_name: ''
+experiment_id: '238852361520993621'
+lifecycle_stage: active
+run_id: 2fc9ce78d15f44d3a29496a513d79185
+run_name: monumental-mole-703
+run_uuid: 2fc9ce78d15f44d3a29496a513d79185
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737707829794
+status: 3
+tags: []
+user_id: r3z8
