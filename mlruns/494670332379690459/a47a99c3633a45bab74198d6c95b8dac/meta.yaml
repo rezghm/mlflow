@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/494670332379690459/a47a99c3633a45bab74198d6c95b8dac/artifacts
+end_time: 1737705853344
+entry_point_name: ''
+experiment_id: '494670332379690459'
+lifecycle_stage: active
+run_id: a47a99c3633a45bab74198d6c95b8dac
+run_name: nosy-lark-430
+run_uuid: a47a99c3633a45bab74198d6c95b8dac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737705759784
+status: 3
+tags: []
+user_id: r3z8

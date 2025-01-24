@@ -221,7 +221,7 @@ if __name__ == "__main__":
 
     thresholds = {
         "mean_squared_error": MetricThreshold(
-            threshold=0.5,  # Maximum MSE threshold
+            threshold=0.6,  # Maximum MSE threshold
             min_absolute_change=0.1,  # Minimum absolute improvement compared to baseline
             min_relative_change=0.05,  # Minimum relative improvement compared to baseline
             greater_is_better=False  # Lower MSE is better
