@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/494670332379690459/3fa5277fc9ec415f8046e8f9144f0032/artifacts
+end_time: 1737705049310
+entry_point_name: ''
+experiment_id: '494670332379690459'
+lifecycle_stage: active
+run_id: 3fa5277fc9ec415f8046e8f9144f0032
+run_name: fortunate-sponge-66
+run_uuid: 3fa5277fc9ec415f8046e8f9144f0032
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737704964717
+status: 3
+tags: []
+user_id: r3z8
