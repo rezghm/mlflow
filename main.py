@@ -93,5 +93,20 @@ if __name__ == "__main__":
         "mae": mae
     })
     run = mlflow.last_active_run()
-    mlflow.sklearn.log_model(lr, "model", registered_model_name='elastcinet-api')
+    mlflow.sklearn.log_model(lr, "model")
+
+    mlflow.register_model(
+        model_uri='runs:/{}/model'.format(run.info.run_id),
+        name='elastic-api-2'
+    )
+
+    ld = mlflow.pyfunc.load_model(model_uri="models:/elastic-api-2/1")
+    predicted_qualities=ld.predict(test_x)
+    (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
+    print("  RMSE_test: %s" % rmse)
+    print("  MAE_test: %s" % mae)
+    print("  R2_test: %s" % r2)
+
+
     mlflow.end_run()
+    run = mlflow.last_active_run()

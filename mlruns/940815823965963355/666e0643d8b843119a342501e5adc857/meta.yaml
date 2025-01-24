@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/940815823965963355/666e0643d8b843119a342501e5adc857/artifacts
+end_time: 1737709730227
+entry_point_name: ''
+experiment_id: '940815823965963355'
+lifecycle_stage: active
+run_id: 666e0643d8b843119a342501e5adc857
+run_name: sneaky-newt-329
+run_uuid: 666e0643d8b843119a342501e5adc857
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737709708370
+status: 3
+tags: []
+user_id: r3z8
