@@ -16,9 +16,10 @@ logger = logging.getLogger(__name__)
 
 # get arguments from command
 parser = argparse.ArgumentParser()
-parser.add_argument("--alpha", type=float, required=False, default=0.7)
-parser.add_argument("--l1_ratio", type=float, required=False, default=0.7)
+parser.add_argument("--alpha", type=float, required=False, default=0.6)
+parser.add_argument("--l1_ratio", type=float, required=False, default=0.6)
 args = parser.parse_args()
+
 
 # evaluation function
 def eval_metrics(actual, pred):
@@ -34,12 +35,11 @@ if __name__ == "__main__":
 
     # Read the wine-quality csv file from the URL
     data = pd.read_csv("red-wine-quality.csv")
-    #os.mkdir("data/")
+    # os.mkdir("data/")
     data.to_csv("data/red-wine-quality.csv", index=False)
     # Split the data into training and test sets. (0.75, 0.25) split.
     train, test = train_test_split(data)
-    train.to_csv("data/train.csv")
-    test.to_csv("data/test.csv")
+
     # The predicted column is "quality" which is a scalar from [3, 9]
     train_x = train.drop(["quality"], axis=1)
     test_x = test.drop(["quality"], axis=1)
@@ -49,11 +49,10 @@ if __name__ == "__main__":
     alpha = args.alpha
     l1_ratio = args.l1_ratio
 
-    mlflow.set_tracking_uri(uri="")
+    mlflow.set_tracking_uri(uri="http://127.0.0.1:5000/")
 
     print("The set tracking uri is ", mlflow.get_tracking_uri())
-    exp = mlflow.set_experiment(experiment_name="experiment_register_model")
-    #get_exp = mlflow.get_experiment(exp_id)
+    exp = mlflow.set_experiment(experiment_name="experiment_register_model_api")
 
     print("Name: {}".format(exp.name))
     print("Experiment_id: {}".format(exp.experiment_id))
@@ -65,15 +64,12 @@ if __name__ == "__main__":
     mlflow.start_run()
     tags = {
         "engineering": "ML platform",
-        "release.candidate":"RC1",
+        "release.candidate": "RC1",
         "release.version": "2.0"
     }
 
-
     mlflow.set_tags(tags)
-    mlflow.autolog(
-        log_input_examples=True
-    )
+
     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
     lr.fit(train_x, train_y)
 
@@ -86,11 +82,16 @@ if __name__ == "__main__":
     print("  MAE: %s" % mae)
     print("  R2: %s" % r2)
 
-    mlflow.log_artifact("red-wine-quality.csv")
+    mlflow.log_params({
+        "alpha": 0.3,
+        "l1_ratio": 0.3
+    })
 
-    artifacts_uri=mlflow.get_artifact_uri()
-    print("The artifact path is",artifacts_uri )
-    mlflow.end_run()
+    mlflow.log_metrics({
+        "rmse": rmse,
+        "r2": r2,
+        "mae": mae
+    })
     run = mlflow.last_active_run()
-    print("Active run id is {}".format(run.info.run_id))
-    print("Active run name is {}".format(run.info.run_name))
+    mlflow.sklearn.log_model(lr, "model", registered_model_name='elastcinet-api')
+    mlflow.end_run()

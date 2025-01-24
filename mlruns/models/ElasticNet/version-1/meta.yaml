@@ -1,8 +1,8 @@
 aliases: []
 creation_timestamp: 1737707910732
 current_stage: None
-description: ''
-last_updated_timestamp: 1737707910732
+description: Elastic Net Model trained with alpha and l1_ratio
+last_updated_timestamp: 1737708195427
 name: ElasticNet
 run_id: 2fc9ce78d15f44d3a29496a513d79185
 run_link: ''

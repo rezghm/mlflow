@@ -1,5 +1,6 @@
-aliases: {}
+aliases:
+  champion: '3'
 creation_timestamp: 1737707910595
-description: ''
-last_updated_timestamp: 1737707910732
+description: ElasticNet model trained on red wine dataset
+last_updated_timestamp: 1737708936278
 name: ElasticNet

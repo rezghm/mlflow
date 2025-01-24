@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/r3z8/PycharmProjects/mlflow_demo1/mlruns/238852361520993621/522994876a234152b36ed58ea80da09f/artifacts
+end_time: 1737708745663
+entry_point_name: ''
+experiment_id: '238852361520993621'
+lifecycle_stage: active
+run_id: 522994876a234152b36ed58ea80da09f
+run_name: awesome-rat-261
+run_uuid: 522994876a234152b36ed58ea80da09f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737708725026
+status: 3
+tags: []
+user_id: r3z8
