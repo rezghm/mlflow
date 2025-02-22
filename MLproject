@@ -1,2 +1,3 @@
 name: "Elastic Regression project"
-environmets
+
+python_env: files/config/python_env.yaml
